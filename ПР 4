@@ -1,0 +1,266 @@
+//Задание 1
+var student = {
+    name: "Задание 1",
+    class: "11 класс",
+    rollno: 12
+};
+
+var properties = Object.values(student);
+
+console.log(properties.join(", "));
+
+//Задание 2
+var student2 = {
+    name: "Задание 2",
+    class: "11 класс",
+    rollno: 12
+};
+
+
+var properties2 = Object.values(student2);
+console.log(properties2.join(", "));
+
+delete student2.rollno;
+
+var properties2 = Object.values(student2);
+console.log(properties2.join(", "));
+
+//Задание 3
+var student3 = {
+    name: "Задание 3",
+    class: "11 класс",
+    rollno: 12
+};
+
+
+var properties3 = Object.values(student2);
+console.log(properties3.join(", "));
+
+let count = 0;
+for (let key in student3) {
+  count++;
+}
+console.log('Длинна объекта: ',count);
+
+//Задание 4
+var library = [
+    {
+        author: "Билл Гейтс",
+        title: "Дорога впереди",
+        readStatus: true
+    },
+    {
+        author: "Стив Джобс",
+        title: "Уолтер Исааксон",
+        readStatus: true
+    },
+    {
+        author: "Сюзанна Коллинз",
+        title: "Сойка-пересмешница: последняя книга Голодных игр",
+        readStatus: false
+    }
+];
+var bookList = document.getElementById("bookList");
+
+for (var i = 0; i < library.length; i++) {
+    var status = library[i].readStatus ? "Прочитана" : "Не прочитана";
+
+    console.log("Название: " + library[i].title + ", Автор: " + library[i].author + ", Статус: " + status);
+}
+
+//Задание 5
+class Cylinder {
+    constructor(radius, height) {
+        this.radius = radius;
+        this.height = height;
+    }
+
+    getVolume() {
+        return (Math.PI * Math.pow(this.radius, 2) * this.height).toFixed(4);
+    }
+}
+
+const cylinder = new Cylinder(9, 15);
+console.log("Объем цилиндра: " + cylinder.getVolume());
+
+//Задание 6
+function bubbleSort(arr) {
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr.length - 1 - i; j++) {
+            if (arr[j] > arr[j + 1]) {
+                let temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+    return arr;
+}
+
+const arr = [6, 4, 0, 3, -2, 1];
+console.log(bubbleSort(arr));
+
+
+//Задание 7
+function getSubstrings(str) {
+    let substrings = [];
+    for (let i = 0; i < str.length; i++) {
+        for (let j = i + 1; j <= str.length; j++) {
+            substrings.push(str.slice(i, j));
+        }
+    }
+    return substrings;
+}
+
+const result = getSubstrings("cat");
+console.log(result);
+
+//Задание 8
+function displayTime() {
+    setInterval(() => {
+        const currentTime = new Date();
+        const hours = currentTime.getHours().toString().padStart(2, '0');
+        const minutes = currentTime.getMinutes().toString().padStart(2, '0');
+        const seconds = currentTime.getSeconds().toString().padStart(2, '0');
+        console.log(`${hours}:${minutes}:${seconds}`);
+    }, 1000);
+}
+
+displayTime();
+
+//Задание 9
+class Circle {
+    constructor(radius) {
+        this.radius = radius;
+    }
+
+    getArea() {
+        return (Math.PI * Math.pow(this.radius, 2)).toFixed(2);
+    }
+
+    getPerimeter() {
+        return (2 * Math.PI * this.radius).toFixed(2);
+    }
+}
+
+const circle = new Circle(10);
+console.log("Площадь круга: " + circle.getArea());
+console.log("Периметр круга: " + circle.getPerimeter());
+
+//Задание 10
+var library1 = [
+    {
+        title: "Дорога впереди",
+        author: "Билл Гейтс",
+        libraryID: 1254
+    },
+    {
+        title: "Уолтер Исааксон",
+        author: "Стив Джобс",
+        libraryID: 4264
+    },
+    {
+        title: "Сойка-пересмешница: последняя книга Голодных игр",
+        author: "Сюзанна Коллинз",
+        libraryID: 3245
+    }
+];
+
+library1.sort((a, b) => a.libraryID - b.libraryID);
+
+console.log(library1);
+
+//Задание 11
+function allMethods(obj) {
+    const methods = [];
+    let currentObj = obj;
+    while (currentObj !== null) {
+        let props = Object.getOwnPropertyNames(currentObj);
+        for (let prop of props) {
+            if (typeof obj[prop] === 'function') {
+                methods.push(prop);
+            }
+        }
+        currentObj = Object.getPrototypeOf(currentObj);
+    }
+    
+    return methods;
+}
+
+const arr1 = [1, 2, 3];
+console.log(allMethods(arr1));
+
+//Задание 12
+function parseURL(url) {
+    const urlObj = new URL(url);
+    return {
+        protocol: urlObj.protocol,
+        hostname: urlObj.hostname,
+        pathname: urlObj.pathname,
+        search: urlObj.search,
+        hash: urlObj.hash
+    };
+}
+
+const url = "https://www.example.com/path/to/resource?search=query#section";
+console.log(parseURL(url));
+
+//Задание 13
+function getAllProperties(obj) {
+    let properties = [];
+    for (let prop in obj) {
+        properties.push(prop);
+    }
+    return properties;
+}
+
+const person13 = { name: "Chrollo Lucilfer", age: 30 };
+console.log(getAllProperties(person13));
+
+//Задание 14
+function getAllValues(obj) {
+    return Object.values(obj);
+}
+
+const person14 = { name: "Kurapika", age: 17 };
+console.log(getAllValues(person14));
+
+//Задание 15
+function objectToList(obj) {
+    return Object.entries(obj);
+}
+
+const person15 = { name: "Gon Freecss", age: 13 };
+console.log(objectToList(person15));
+
+//Задание 16
+function reverseObject(obj) {
+    let reversedObj = {};
+    for (let key in obj) {
+        reversedObj[obj[key]] = key;
+    }
+    return reversedObj;
+}
+
+const person16 = { name: "Killua Zoldyck", age: 12 };
+console.log(reverseObject(person16));
+
+//Задание 17
+function hasProperty(obj, prop) {
+    return obj.hasOwnProperty(prop);
+}
+
+const person17 = { name: "Hisoka", age: 25 };
+console.log(hasProperty(person17, "name")); 
+console.log(hasProperty(person17, "address"));
+
+//Задание 18
+function isDOMElement(element) {
+    return element instanceof Element;
+}
+
+const div = document.createElement('div');
+console.log(isDOMElement(div));  
+const notElement = {};
+console.log(isDOMElement(notElement));
+
